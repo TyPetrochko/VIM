@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/accts/thp8/Documents/cs323/hw1far/Examples'
+let g:netrw_dirhist_2='/home/accts/thp8/Documents/cs323/m15/Examples'
+let g:netrw_dirhist_3='/home/accts/thp8/Documents/cs323/m15'
+let g:netrw_dirhist_4='/home/classes/cs437/class/petrochko.tyler.thp8'
+let g:netrw_dirhist_5='/artemis/home/classes/cs433/class/petrochko.tylerhutchinson.thp8/Hostess/data'
+let g:netrw_dirhist_6='/artemis/home/accts/thp8/stat365'
