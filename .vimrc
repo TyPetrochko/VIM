@@ -13,8 +13,9 @@ set backspace=2
 
 " more basic stuff
 set tabstop=2
+set softtabstop=2
 set shiftwidth=2
-set noexpandtab
+set expandtab
 set nu
 
 " red line at column 80
@@ -29,7 +30,7 @@ filetype plugin indent on
 " and :Helptags if ^ not working
 autocmd vimenter * NERDTree
 autocmd VimEnter * wincmd p
-
+nmap ,n :NERDTreeFind<CR>
 " enable line numbers in NERDTree window
 let NERDTreeShowLineNumbers=1
 
@@ -44,3 +45,7 @@ syntax on
 " I have no idea why this is here
 let g:powerline_loaded = 1
 
+" Control-P to fuzz match/find a file
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+:imap jk <Esc>

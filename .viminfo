@@ -8,121 +8,128 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/set_ptbl
+~MSle0~/process_args
 
 # Last Substitute Search Pattern:
-~MSle0&http:\/\/birdseye-backend.herokuapp.com:8080
+~MSle0&puts
 
 # Last Substitute String:
-$http:\/\/fd25b0f9.ngrok.io
+$printf
 
 # Command Line History (newest to oldest):
 :wqa
-:18
-:12
 :w
-:6
-:qa
-:20
-:8
 :noh
-:q!
+:20d
 :q
+:qa
+:%s/KERN_DEBUG/DEBUG
+:%s/KERN_DEBUG/DEBUG/g
+:254
+:574
+:186
+:216
+:Noh
+:wq
+:266
+:165
+:68
+:%s/puts/printf
+:%s/putchar/puts/g
+:%s/MAX_BUF/BUFLEN/g
+:%s/BUFLEN/MAX_BUF/g
+:%s/dprintf/printf/g
+::q
+:56
+:33
+:288
+:155
+:242
 :40
-:34
-:35
-:11
-:71
-:37
-:99
-:74
-:55
-:43
-:47
-:45
-:138
-:!reset
-:137
-:131
-:129
-:125
-:122
-:86
-:80
-:72
-:65
-:58
-:qa!
-:95
-:116
-:115
+:41
+:16
+:%s/say/\/\/say
+:.,.+9
+:156
+:110
+:%s/\/\/KERN_DEBUG/say/g
+:%s/KERN_DEBUG/\/\/KERN_DEBUG/g
+:%s/aquire/acquire/g
+:%s/lock_id/id/g
+:63
+:%s/b\./buffer->/g
+:126
+:44
 :117
-:96
-:36
-:22
-:69
-:90
-:139
-:135
-:64
-:%s/http:\/\/birdseye-backend.herokuapp.com:8080/http:\/\/fd25b0f9.ngrok.io
-:%s/http://birdseye-backend.herokuapp.com:8080/http://fd25b0f9.ngrok.io
+:47
+:48
+:46gg
+:49
+:37
+:nooh
 
 # Search String History (newest to oldest):
-?/set_ptbl
-?/identity
-?/set_pdir_entry
-?/set_ptbl_entry
-?/physical
-?/get_pdir
-?/get_quota
-?/c
-?/MAX_CHILDREN
-?/at_is_alloc
-?/at_is
-?/is_norm
-?/MC
-?/updateU
-?/ping
-?/group_id
-?/true
-?/hasUser
-?/has
-?/group
-?/de
-?/groups
-?/join
-?/create
-? http:\/\/birdseye-backend.herokuapp.com:8080
-?/web
-? localhost
-?/heirs
-?/GET
-?/get
-?/thei
-?/update
-?/getGroupId
-?/Gro
-?/getNum
-?/too
-?/high
-?/optional
-?/team
-?/teams
-?/getTea
-?/bad request
-?/exit
-?/getBoolean
-?/getInt
-?/addUser
-?/getUsers
-?/RE
-? 4567
-?/1
+?/process_args
+?/mg_bind
+?/port
+?/int port
+?/process_
+?/jkkkk
+?/dev_file
+?/sys_ls
+?/ls in cwd
+?/O_CREAT
+?/DEBUG
+?/KERN_DEBUG
+?/cp_r
+?/cp_dir
+?/mkdir
+?/cwd
+?/path
+?/called on
+?/buff
+?/sys_open
+? KERN_DEBUG
+?/copy_file
+?/cp: could not open file
+?/name is
+?/name
+?/processing
+?/ptr
+?/ls buffer
+?/ls
+?/sys_link
+?/link
+?/dir_link
+?/printf("usage
+?/printf
+?/usage: cp
+?/is_dir
+?/buffer is
+?/void cp
+?/void ls
+?/len
+?/k_buff
+?/BUFLEN
+?/n
+?/unlink
+?/sys_write
+?/while
+?/main
+?/readline
+?/int main
+?/cat
 
 # Expression History (newest to oldest):
 
 # Input Line History (newest to oldest):
+@/home/accts/thp8/Documents/cs426/Distributed-Graph-Service/replication.hpp
+@/home/accts/thp8/Documents/cs426/Distributed-Graph-Service/replication.cpp
+@/home/accts/thp8/Documents/cs426/Distributed-Graph-Service/util.cpp
+@/home/accts/thp8/Documents/cs426/Distributed-Graph-Service/util.hpp
+@/home/accts/thp8/Documents/cs426/Distributed-Graph-Service/disk_util.hpp
+@/home/accts/thp8/Documents/cs426/Distributed-Graph-Service/persistence.cpp
+@/home/accts/thp8/Documents/cs426/Distributed-Graph-Service/persistence.hpp
 @/home/accts/thp8/Documents/birds-eye-backend/src/main/java/com/birdseye/backend/User.java
 @/home/accts/thp8/Documents/birds-eye-backend/src/main/java/com/birdseye/backend/Team.java
 @/home/accts/thp8/Documents/birds-eye-backend/src/main/java/com/birdseye/backend/Group.java
@@ -133,192 +140,436 @@ $http:\/\/fd25b0f9.ngrok.io
 
 # Registers:
 "0	LINE	0
-			dprintf("dir entry is %#6x\n", dir_entry);
+	
 ""1	LINE	0
-	<<<<<<< HEAD
+	#include "mongoose.h"
+	#include "memorygraph.hpp"
+	#include "JSON.h"
 "2	LINE	0
-	=======
-	    // TODO: define your local variables here.
-	    //
-	    container_init(mbi_adr);
-	    // TODO
-	>>>>>>> a55164acab7babb620cb19e263949ff20f744f39
-"3	BLOCK	1
-	 -
-	 -
-	 -
-	 -
-	 -
+	
+"3	LINE	0
+	
 "4	LINE	0
-	    // TODO: define your local variables here.
-	    //
+	
 "5	LINE	0
-	    // TODO
+	#define DEBUG (false)
+	
 "6	LINE	0
-			dprintf("table entry is %#6x\n", table_entry);
-			dprintf("dir entry is %#6x\n", dir_entry);
+	#include <iostream>
+	#include <vector>
+	#include <string>
+	#include <thread>
 "7	LINE	0
-			dprintf("dir entry bit mod is %d\n", (dir_entry & PTE_P) == 0);
+	#include <iostream>
+	#include <vector>
+	#include <string>
+	#include <thread>
 "8	LINE	0
-			dprintf();
+	#include <stdlib.h>
 "9	LINE	0
-	    // TODO: define your local variables here.
-	    //
+	#include "memorygraph.hpp"
+"a	BLOCK	2
+	edi
+	esi
+	ebx
+	ebp
+"b	BLOCK	0
+	:
+	:
+	:
+	:
 "w	CHAR	0
 	€kb
-"-	BLOCK	1
-	-	
+"-	CHAR	0
+	if(get_filetype(dest_buff) == T_DIR){
 
 # File marks:
-'0  76  1  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
-'1  77  1  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
-'2  79  0  ~/Documents/cs422/mcertikos/NERD_tree_1
-'3  82  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
-'4  9  1  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
-'5  12  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
-'6  23  28  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/test.c
-'7  46  23  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
-'8  37  0  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
-'9  135  44  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
+'0  1  0  ~/.vimrc
+'1  10  50  ~/Documents/cs426/Distributed-Graph-Service/Makefile
+'2  230  23  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+'3  1  0  ~/Documents/cs426/Distributed-Graph-Service/Makefile
+'4  98  0  ~/Documents/cs426/Distributed-Graph-Service/gen-cpp/GraphEdit.h
+'5  13  0  ~/Documents/cs426/Distributed-Graph-Service/rpc.thrift
+'6  234  2  ~/Documents/cs422/mcertikos/user/pingpong/ping.c
+'7  22  0  ~/Documents/cs422/mcertikos/README
+'8  23  6  ~/Documents/cs422/mcertikos/README
+'9  300  0  ~/Documents/cs422/mcertikos/user/pingpong/ping.c
 
 # Jumplist (newest first):
--'  76  1  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
--'  1  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
--'  77  1  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
--'  79  0  ~/Documents/cs422/mcertikos/NERD_tree_1
--'  83  2  ~/Documents/cs422/mcertikos/NERD_tree_1
--'  1  0  ~/Documents/cs422/mcertikos/NERD_tree_1
--'  82  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
--'  17  4  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
--'  9  1  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
--'  35  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
--'  33  28  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/test.c
--'  9  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/test.c
--'  169  4  ~/Documents/cs422/mcertikos/NERD_tree_1
--'  182  2  ~/Documents/cs422/mcertikos/NERD_tree_1
--'  12  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
--'  53  1  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
--'  58  4  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
--'  2  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
--'  61  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
--'  24  2  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  15  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
--'  30  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  80  4  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  12  1  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  53  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  54  34  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  95  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  51  56  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  20  37  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  19  24  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  1  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  91  29  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  87  33  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  86  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  45  1  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  81  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  46  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  78  21  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  85  9  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  77  1  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  42  5  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  84  1  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  74  11  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  72  11  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  57  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  56  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  40  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  50  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  26  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  23  28  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/test.c
--'  27  4  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  1  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTInit/MPTInit.c
--'  43  3  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  37  69  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  37  0  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  34  20  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  63  23  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  1  0  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  138  22  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  135  44  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  129  16  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  47  0  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  126  34  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  123  40  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  139  0  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  40  0  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  103  1  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  109  2  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  101  15  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  91  0  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  80  51  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  72  23  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  65  23  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  51  2  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  58  23  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  4  0  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  3  0  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/import.h
--'  1  0  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/import.h
--'  23  0  ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
--'  7  3  ~/Documents/cs422/mcertikos/README
+-'  1  0  ~/.vimrc
+-'  10  50  ~/Documents/cs426/Distributed-Graph-Service/Makefile
+-'  1  0  ~/Documents/cs426/Distributed-Graph-Service/Makefile
+-'  230  23  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  27  5  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  252  0  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  13  25  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  36  0  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  20  0  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  3  0  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  16  0  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  5  0  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  37  0  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  33  0  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  1  14  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  25  22  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  2  0  ~/Documents/cs426/Distributed-Graph-Service/replication.hpp
+-'  1  0  ~/Documents/cs426/Distributed-Graph-Service/replication.hpp
+-'  233  23  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  29  57  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  25  10  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  62  45  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  51  6  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  50  8  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  41  61  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  2  0  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  247  0  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  1  0  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  24  0  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  38  24  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  49  0  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  53  4  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  77  1  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  98  0  ~/Documents/cs426/Distributed-Graph-Service/gen-cpp/GraphEdit.h
+-'  1  0  ~/Documents/cs426/Distributed-Graph-Service/gen-cpp/GraphEdit.h
+-'  13  0  ~/Documents/cs426/Distributed-Graph-Service/rpc.thrift
+-'  1  0  ~/Documents/cs426/Distributed-Graph-Service/rpc.thrift
+-'  234  2  ~/Documents/cs422/mcertikos/user/pingpong/ping.c
+-'  99  4  ~/Documents/cs422/mcertikos/user/pingpong/ping.c
+-'  92  4  ~/Documents/cs422/mcertikos/user/pingpong/ping.c
+-'  471  0  ~/Documents/cs422/mcertikos/user/pingpong/ping.c
+-'  1  0  ~/Documents/cs422/mcertikos/user/pingpong/ping.c
+-'  22  0  ~/Documents/cs422/mcertikos/README
+-'  21  0  ~/Documents/cs422/mcertikos/README
+-'  23  0  ~/Documents/cs422/mcertikos/README
+-'  25  0  ~/Documents/cs422/mcertikos/README
+-'  13  204  ~/Documents/cs422/mcertikos/README
+-'  3  83  ~/Documents/cs422/mcertikos/README
 -'  1  0  ~/Documents/cs422/mcertikos/README
--'  465  0  ~/Documents/cs422/mcertikos/NERD_tree_1
--'  476  2  ~/Documents/cs422/mcertikos/NERD_tree_1
--'  7  0  ~/Documents/cs422/NERD_tree_1
--'  14  4  ~/Documents/cs422/NERD_tree_1
--'  140  4  ~/Documents/cs422/mcertikos/NERD_tree_1
--'  153  2  ~/Documents/cs422/mcertikos/NERD_tree_1
--'  24  2  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  30  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  80  4  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  12  1  ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
--'  32  28  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/test.c
--'  8  0  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/test.c
--'  138  4  ~/Documents/cs422/mcertikos/NERD_tree_1
--'  151  2  ~/Documents/cs422/mcertikos/NERD_tree_1
--'  78  1  ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
--'  48  0  ~/Documents/cs422/mcertikos/NERD_tree_1
+-'  300  0  ~/Documents/cs422/mcertikos/user/pingpong/ping.c
+-'  20  5  ~/Documents/cs422/mcertikos/user/pingpong/ping.c
+-'  30  0  ~/Documents/cs422/mcertikos/user/pingpong/ping.c
+-'  557  2  ~/Documents/cs422/mcertikos/kern/fs/sysfile.c
+-'  250  0  ~/Documents/cs422/mcertikos/kern/fs/sysfile.c
+-'  552  13  ~/Documents/cs422/mcertikos/kern/fs/sysfile.c
+-'  278  23  ~/Documents/cs422/mcertikos/user/include/syscall.h
+-'  280  0  ~/Documents/cs422/mcertikos/user/include/syscall.h
+-'  562  0  ~/Documents/cs422/mcertikos/kern/fs/sysfile.c
+-'  91  4  ~/Documents/cs422/mcertikos/user/pingpong/ping.c
+-'  281  7  ~/Documents/cs422/mcertikos/user/include/syscall.h
+-'  1  0  ~/Documents/cs422/mcertikos/user/include/syscall.h
+-'  276  21  ~/Documents/cs422/mcertikos/user/include/syscall.h
+-'  108  4  ~/Documents/cs422/mcertikos/kern/trap/TDispatch/TDispatch.c
+-'  109  21  ~/Documents/cs422/mcertikos/kern/trap/TDispatch/TDispatch.c
+-'  272  1  ~/Documents/cs422/mcertikos/user/include/syscall.h
+-'  169  10  ~/Documents/cs422/mcertikos/user/include/syscall.h
+-'  282  2  ~/Documents/cs422/mcertikos/user/include/syscall.h
+-'  542  2  ~/Documents/cs422/mcertikos/kern/fs/sysfile.c
+-'  14  0  ~/Documents/cs422/mcertikos/kern/trap/TDispatch/TDispatch.c
+-'  179  0  ~/Documents/cs422/mcertikos/user/include/syscall.h
+-'  271  22  ~/Documents/cs422/mcertikos/user/include/syscall.h
+-'  270  2  ~/Documents/cs422/mcertikos/user/include/syscall.h
+-'  560  31  ~/Documents/cs422/mcertikos/kern/fs/sysfile.c
+-'  98  4  ~/Documents/cs422/mcertikos/user/pingpong/ping.c
+-'  97  4  ~/Documents/cs422/mcertikos/user/pingpong/ping.c
+-'  541  5  ~/Documents/cs422/mcertikos/kern/fs/sysfile.c
+-'  21  5  ~/Documents/cs422/mcertikos/kern/fs/sysfile.c
+-'  1  0  ~/Documents/cs422/mcertikos/kern/fs/sysfile.c
+-'  569  84  ~/Documents/cs422/mcertikos/kern/fs/sysfile.c
+-'  546  18  ~/Documents/cs422/mcertikos/kern/fs/sysfile.c
+-'  561  53  ~/Documents/cs422/mcertikos/kern/fs/sysfile.c
+-'  236  1  ~/Documents/cs422/mcertikos/kern/fs/sysfile.c
+-'  620  0  ~/Documents/cs422/mcertikos/kern/fs/sysfile.c
+-'  230  23  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  27  5  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  252  0  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  13  25  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+-'  36  0  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  20  0  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  3  0  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  16  0  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  5  0  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  37  0  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  33  0  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  1  14  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  25  22  ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+-'  2  0  ~/Documents/cs426/Distributed-Graph-Service/replication.hpp
+-'  1  0  ~/Documents/cs426/Distributed-Graph-Service/replication.hpp
+-'  233  23  ~/Documents/cs426/Distributed-Graph-Service/main.cpp
 
 # History of marks within files (newest to oldest):
 
-> ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/MPTOp.c
-	"	76	1
-	^	81	4
-	.	76	0
-	+	61	0
-	+	56	32
-	+	55	10
+> ~/.vimrc
+	"	1	0
+
+> ~/Documents/cs426/Distributed-Graph-Service/NERD_tree_1
+	"	4	0
+	.	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+
+> ~/Documents/cs426/Distributed-Graph-Service/Makefile
+	"	10	50
+	^	10	51
+	.	10	50
+	+	10	50
+
+> ~/Documents/cs426/Distributed-Graph-Service/main.cpp
+	"	230	23
+	^	230	24
+	.	230	23
+	+	55	0
+	+	35	0
+	+	53	0
+	+	34	0
+	+	35	29
+	+	43	0
+	+	44	0
+	+	45	0
+	+	35	49
+	+	39	28
+	+	41	0
+	+	41	72
+	+	34	46
+	+	39	0
+	+	37	27
+	+	38	30
+	+	34	55
+	+	53	0
+	+	24	15
+	+	25	18
+	+	18	55
+	+	22	9
+	+	25	0
+	+	23	0
+	+	22	45
+	+	35	29
+	+	36	0
+	+	45	26
 	+	54	0
-	+	53	0
-	+	56	28
-	+	57	24
-	+	57	33
-	+	57	26
-	+	58	54
-	+	53	0
-	+	17	11
-	+	17	45
-	+	17	0
-	+	17	41
-	+	17	0
-	+	17	0
-	+	17	0
-	+	19	33
-	+	17	0
-	+	82	0
-	+	76	0
-	+	81	3
-	+	77	0
-	+	76	0
-	+	76	0
-	+	77	0
-	+	83	0
-	+	76	0
-	a	58	33
+	+	34	0
+	+	28	12
+	+	29	0
+	+	30	0
+	+	29	0
+	+	38	35
+	+	24	5
+	+	38	24
+	+	25	10
+	+	241	25
+	+	230	20
+	+	233	23
+	+	8	0
+	+	9	0
+	+	14	0
+	+	13	25
+	+	230	23
+
+> ~/Documents/cs426/Distributed-Graph-Service/ControlP
+	"	10	0
+	.	2	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	2	0
+
+> ~/Documents/cs426/Distributed-Graph-Service/replication.hpp
+	"	1	0
+	^	1	0
+	.	1	0
+	+	1	0
+
+> ~/Documents/cs426/Distributed-Graph-Service/replication.cpp
+	"	36	0
+	^	19	0
+	.	20	0
+	+	25	0
+	+	25	33
+	+	32	0
+	+	25	26
+	+	25	0
+	+	1	0
+	+	25	0
+	+	16	19
+	+	16	0
+	+	16	0
+	+	1	0
+	+	26	12
+	+	27	58
+	+	26	11
+	+	32	0
+	+	32	0
+	+	32	1
+	+	34	21
+	+	37	0
+	+	23	14
+	+	27	59
+	+	23	12
+	+	25	25
+	+	29	14
+	+	16	0
+	+	16	0
+	+	16	0
+	+	30	0
+	+	21	20
+	+	31	29
+	+	36	49
+	+	15	29
+	+	16	0
+	+	16	0
+	+	1	0
+	+	5	0
+	+	1	0
+	+	18	0
+	+	20	0
+
+> ~/Documents/cs426/Distributed-Graph-Service/rpc.thrift
+	"	13	2
+
+> ~/Documents/cs426/Distributed-Graph-Service/gen-cpp/GraphEdit_server.skeleton.cpp
+	"	1	0
+
+> ~/Documents/cs426/Distributed-Graph-Service/gen-cpp/rpc_types.cpp
+	"	1	0
+
+> ~/Documents/cs426/Distributed-Graph-Service/gen-cpp/GraphEdit.h
+	"	98	0
+
+> ~/Documents/cs422/mcertikos/user/pingpong/ping.c
+	"	234	2
+	^	91	26
+	.	92	0
+	+	275	24
+	+	275	28
+	+	275	28
+	+	275	46
+	+	275	44
+	+	275	44
+	+	275	44
+	+	275	48
+	+	275	46
+	+	275	0
+	+	285	20
+	+	247	0
+	+	231	0
+	+	230	41
+	+	246	36
+	+	247	18
+	+	248	25
+	+	230	63
+	+	250	4
+	+	251	19
+	+	247	23
+	+	231	9
+	+	246	56
+	+	249	20
+	+	252	32
+	+	256	50
+	+	258	47
+	+	258	28
+	+	258	29
+	+	255	55
+	+	263	14
+	+	262	22
+	+	270	40
+	+	269	0
+	+	268	0
+	+	269	0
+	+	268	0
+	+	233	18
+	+	233	0
+	+	142	0
+	+	233	17
+	+	233	52
+	+	283	0
+	+	284	0
+	+	275	0
+	+	285	43
+	+	275	0
+	+	189	0
+	+	191	20
+	+	381	0
+	+	155	0
+	+	160	41
+	+	161	60
+	+	164	0
+	+	160	42
+	+	150	19
+	+	153	0
+	+	155	49
+	+	158	0
+	+	160	42
+	+	163	0
+	+	430	0
+	+	378	0
+	+	377	23
+	+	376	24
+	+	430	0
+	+	429	0
+	+	430	0
+	+	233	0
+	+	266	0
+	+	266	25
+	+	268	0
+	+	266	0
+	+	239	0
+	+	242	26
+	+	243	20
+	+	244	11
+	+	239	0
+	+	238	35
+	+	241	16
+	+	259	11
+	+	257	21
+	+	90	20
+	+	101	0
+	+	92	23
+	+	101	0
+	+	92	0
+	+	93	8
+	+	100	0
+	+	99	0
+	+	93	8
+	+	94	43
+	+	95	57
+	+	94	43
+	+	97	5
+	+	92	40
+	+	92	0
+	+	90	21
+	+	91	25
+	+	92	0
 
 > ~/Documents/cs422/mcertikos/NERD_tree_1
-	"	22	4
+	"	4	0
 	.	1	0
 	+	1	0
 	+	1	0
@@ -385,437 +636,364 @@ $http:\/\/fd25b0f9.ngrok.io
 	+	1	0
 	+	1	0
 	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
 
-> ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/test.c
-	"	7	30
-	^	8	29
-	.	8	28
-	+	9	28
-	+	13	28
-	+	19	28
-	+	23	28
-	+	29	28
-	+	33	28
-	+	8	28
-
-> ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/MPTIntro.c
-	"	34	0
-	.	55	0
-	+	31	0
-	+	30	54
-	+	37	58
-	+	39	0
-	+	37	0
-	+	37	55
-	+	38	0
-	+	46	54
-	+	46	47
-	+	46	23
-	+	46	46
-	+	46	0
-	+	46	49
-	+	46	43
-	+	46	0
-	+	46	68
-	+	46	0
-	+	46	0
-	+	54	52
-	+	53	1
-	+	54	0
-	+	54	39
-	+	54	43
-	+	54	43
-	+	56	0
-	+	54	79
-	+	56	41
-	+	54	69
-	+	56	22
-	+	54	78
-	+	54	0
-	+	56	0
-	+	54	43
-	+	54	43
-	+	54	0
-	+	27	0
-	+	46	1
-	+	46	57
-	+	46	0
-	+	46	3
-	+	46	3
-	+	46	53
-	+	46	53
-	+	46	60
-	+	46	3
-	+	46	0
-	+	45	73
-	+	54	43
-	+	56	0
-	+	54	34
-	+	54	34
-	+	54	75
-	+	63	1
-	+	62	45
-	+	72	60
-	+	81	0
-	+	81	0
-	+	81	10
-	+	72	50
-	+	81	5
-	+	72	0
-	+	81	0
-	+	77	1
-	+	77	1
-	+	77	1
-	+	85	0
-	+	78	64
-	+	81	0
-	+	80	57
-	+	81	0
-	+	80	74
-	+	80	53
-	+	81	0
-	+	69	0
-	+	72	3
-	+	71	0
-	+	70	74
-	+	79	0
-	+	80	0
-	+	88	0
-	+	86	1
-	+	87	77
-	+	93	0
-	+	96	0
-	+	95	46
-	+	37	0
-	+	46	0
-	+	72	0
-	+	44	47
-	+	55	0
-	b	54	3
-
-> ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/test.c
-	"	40	27
-	^	28	29
-	.	40	0
-	+	12	28
-	+	19	27
-	+	24	27
-	+	12	28
-	+	19	28
-	+	24	28
-	+	30	28
-	+	20	76
-	+	20	0
-	+	24	0
-	+	23	0
-	+	20	0
-	+	23	0
-	+	20	0
-	+	12	28
-	+	19	28
-	+	23	28
-	+	18	37
-	+	29	28
-	+	41	28
-	+	46	28
-	+	40	28
-	+	45	27
-	+	18	28
-	+	22	28
-	+	40	0
-
-> ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/Makefile.inc
-	"	1	0
-
-> ~/Documents/cs422/mcertikos/kern/vmm/MPTOp/import.h
-	"	1	0
-
-> ~/Documents/cs422/mcertikos/kern/vmm/MPTInit/MPTInit.c
-	"	1	0
-
-> ~/Documents/cs422/mcertikos/kern/vmm/MPTIntro/import.h
-	"	5	0
-
-> ~/Documents/cs422/mcertikos/kern/pmm/MContainer/MContainer.c
-	"	37	0
-	^	35	23
-	.	34	0
-	+	34	45
-	+	35	41
-	+	35	54
-	+	51	29
-	+	58	31
-	+	65	27
-	+	72	27
-	+	80	54
-	+	109	15
-	+	109	0
-	+	102	78
-	+	103	27
-	+	105	2
-	+	105	15
-	+	106	0
-	+	105	0
-	+	106	29
-	+	104	0
-	+	87	3
-	+	123	46
-	+	131	0
-	+	126	34
-	+	126	34
-	+	128	16
-	+	129	24
-	+	130	0
-	+	128	11
-	+	131	16
-	+	139	0
-	+	138	22
-	+	34	22
-	+	36	2
-	+	38	0
-	+	35	22
-	+	34	0
-	a	51	8
-	b	65	8
-	c	102	13
-
-> ~/Documents/cs422/mcertikos/kern/pmm/MContainer/test.c
-	"	7	56
-	^	7	57
-	.	7	56
-	+	7	28
-	+	11	28
-	+	7	56
-
-> ~/Documents/cs422/mcertikos/kern/pmm/MContainer/import.h
-	"	3	0
-
-> ~/Documents/cs422/mcertikos/kern/pmm/MATInit/MATInit.c
-	"	11	0
-
-> ~/Documents/cs422/mcertikos/kern/pmm/MATIntro/MATIntro.c
-	"	74	0
-
-> ~/.bashrc
-	"	8	31
-	^	8	32
-	.	8	31
-	+	3	30
-	+	4	30
-	+	9	0
-	+	8	31
+> ~/Documents/cs422/mcertikos/ControlP
+	"	4	0
+	.	2	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	2	0
 
 > ~/Documents/cs422/mcertikos/README
-	"	7	3
-	^	7	4
-	.	7	3
-	+	1	0
-	+	6	0
-	+	6	0
-	+	8	0
-	+	8	0
-	+	7	3
+	"	22	0
+	.	22	0
+	+	11	270
+	+	11	178
+	+	11	285
+	+	13	326
+	+	14	0
+	+	13	0
+	+	13	204
+	+	15	282
+	+	19	386
+	+	21	300
+	+	24	0
+	+	58	0
+	+	25	0
+	+	22	0
 
-> ~/Documents/cs422/NERD_tree_1
-	"	7	0
-	.	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
+> ~/Documents/cs422/mcertikos/kern/fs/sysfile.c
+	"	603	1
+	.	603	0
+	+	605	29
+	+	606	11
+	+	45	64
+	+	448	32
+	+	44	7
+	+	43	6
+	+	492	43
+	+	590	0
+	+	589	14
+	+	546	12
+	+	552	21
+	+	550	29
+	+	545	17
+	+	558	0
+	+	545	0
+	+	558	19
+	+	209	19
+	+	213	0
+	+	213	14
+	+	217	14
+	+	224	14
+	+	213	31
+	+	214	0
+	+	213	0
+	+	214	24
+	+	86	0
+	+	88	0
+	+	85	32
+	+	212	0
+	+	213	0
+	+	212	2
+	+	213	53
+	+	204	19
+	+	218	12
+	+	221	24
+	+	217	0
+	+	221	58
+	+	222	12
+	+	217	0
+	+	220	32
+	+	224	34
+	+	224	34
+	+	224	50
+	+	224	18
+	+	224	31
+	+	223	0
+	+	223	0
+	+	221	26
+	+	223	0
+	+	224	0
+	+	85	0
+	+	88	0
+	+	209	0
+	+	213	0
+	+	214	0
+	+	217	0
+	+	566	43
+	+	543	28
+	+	566	0
+	+	550	3
+	+	546	17
+	+	559	2
+	+	560	16
+	+	562	39
+	+	544	27
+	+	552	10
+	+	562	61
+	+	568	39
+	+	570	73
+	+	552	28
+	+	562	53
+	+	546	18
+	+	565	34
+	+	561	36
+	+	542	32
+	+	558	41
+	+	543	20
+	+	551	28
+	+	542	28
+	+	549	7
+	+	553	2
+	+	554	46
+	+	557	0
+	+	558	0
+	+	557	2
+	+	558	47
+	+	545	14
+	+	552	0
+	+	555	0
+	+	558	0
+	+	557	43
+	+	603	45
+	+	583	46
+	+	557	76
+	+	573	31
+	+	557	0
+	+	573	0
+	+	583	0
+	+	588	0
+	+	603	0
 
-> ~/NERD_tree_1
-	"	4	0
-	.	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
+> ~/Documents/cs422/mcertikos/user/include/syscall.h
+	"	225	4
+	^	278	24
+	.	278	23
+	+	12	18
+	+	195	20
+	+	196	15
+	+	186	22
+	+	188	20
+	+	196	19
+	+	164	35
+	+	166	24
+	+	167	23
+	+	177	23
+	+	207	10
+	+	209	20
+	+	218	19
+	+	229	22
+	+	231	20
+	+	239	19
+	+	248	22
+	+	250	20
+	+	258	20
+	+	177	12
+	+	210	0
+	+	210	0
+	+	210	41
+	+	210	35
+	+	218	12
+	+	210	0
+	+	24	0
+	+	25	0
+	+	26	7
+	+	28	8
+	+	33	21
+	+	28	7
+	+	34	0
+	+	34	14
+	+	26	9
+	+	25	22
+	+	32	8
+	+	30	0
+	+	32	0
+	+	31	15
+	+	28	0
+	+	29	0
+	+	29	8
+	+	36	10
+	+	25	20
+	+	29	5
+	+	25	21
+	+	34	0
+	+	33	23
+	+	28	13
+	+	29	20
+	+	263	0
+	+	264	0
+	+	265	7
+	+	272	10
+	+	283	10
+	+	272	19
+	+	221	45
+	+	263	27
+	+	272	13
+	+	272	10
+	+	272	21
+	+	263	60
+	+	272	23
+	+	272	47
+	+	263	44
+	+	270	26
+	+	266	22
+	+	270	26
+	+	271	50
+	+	282	31
+	+	282	0
+	+	272	0
+	+	276	19
+	+	277	17
+	+	279	17
+	+	280	22
+	+	280	47
+	+	272	0
+	+	276	0
+	+	281	0
+	+	278	16
+	+	266	22
+	+	268	25
+	+	278	23
+	j	190	21
 
-> ~/Documents/birds-eye-backend/NERD_tree_1
-	"	4	0
-	.	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
+> ~/Documents/cs422/mcertikos/kern/thread/PTCBIntro/PTCBIntro.c
+	"	91	14
 
-> ~/Documents/birds-eye-backend/src/main/java/com/birdseye/backend/User.java
-	"	1	0
-	^	91	40
-	.	91	39
-	+	1	0
-	+	9	0
-	+	10	16
-	+	13	35
-	+	11	1
-	+	13	52
-	+	13	23
-	+	26	0
-	+	26	1
-	+	26	0
-	+	24	18
-	+	100	0
-	+	102	0
-	+	26	2
-	+	13	25
-	+	28	20
-	+	29	11
-	+	100	0
-	+	32	22
-	+	33	13
-	+	20	29
-	+	26	20
-	+	26	0
-	+	36	27
-	+	37	18
-	+	40	26
-	+	41	17
-	+	56	33
-	+	58	15
-	+	61	32
-	+	63	14
-	+	78	32
-	+	26	0
-	+	25	26
-	+	20	28
-	+	57	20
-	+	62	20
-	+	78	32
-	+	79	20
-	+	82	28
-	+	82	28
-	+	7	0
-	+	86	25
-	+	87	37
-	+	88	39
-	+	92	29
-	+	94	17
-	+	36	14
-	+	40	14
-	+	56	31
-	+	61	30
-	+	83	5
-	+	83	0
-	+	95	23
-	+	97	14
-	+	84	0
-	+	21	0
-	+	17	26
-	+	19	25
-	+	44	30
-	+	45	18
-	+	48	26
-	+	49	14
-	+	52	30
-	+	53	18
-	+	66	36
-	+	67	15
-	+	70	32
-	+	71	11
-	+	74	36
-	+	75	15
-	+	93	0
-	+	89	40
-	+	92	0
-	+	90	0
-	+	92	0
-	+	90	32
-	+	91	39
+> ~/Documents/cs422/mcertikos/user/include/file.h
+	"	46	0
+
+> ~/Documents/cs422/mcertikos/kern/fs/file.h
+	"	43	0
