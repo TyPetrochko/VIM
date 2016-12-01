@@ -49,3 +49,9 @@ let g:powerline_loaded = 1
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 :imap jk <Esc>
+
+" To install:
+" git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+" cd ~/.vim
+" git clone https://github.com/kien/ctrlp.vim.git bundle/ctrlp.vim
+"
