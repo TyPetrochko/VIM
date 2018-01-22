@@ -8,6 +8,10 @@ set nu
 set ruler
 set incsearch
 
+" searching
+set ignorecase
+set smartcase
+
 " should be able to delete characters (weird zoo glitch)
 set backspace=2
 
